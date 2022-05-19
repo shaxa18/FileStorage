@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -50,6 +52,19 @@ public class FileStorageService {
             multipartFile.transferTo(file);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Transactional()
+    public FileStorage findByHashId(String hashId){
+        return fileStorageRepository.findByHashId(hashId);
+    }
+
+    public void delete(String hashId){
+        FileStorage fileStorage=findByHashId(hashId);
+        File file =new File(String.format("%s/%s" , this.uploadFolder,fileStorage.getUploudPath()));
+        if (file.delete()){
+            fileStorageRepository.delete(fileStorage);
         }
     }
 

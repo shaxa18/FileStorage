@@ -1,12 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Employee;
+import com.example.demo.model.FileStorage;
 import com.example.demo.service.EmployeeService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -23,6 +21,4 @@ public class EmployeeRestController {
         Employee employee1=employeeService.save(employee);
         return ResponseEntity.ok(employee);
     }
-
-
 }
