@@ -34,7 +34,7 @@ public class FileStorageController {
         return ResponseEntity.ok(multipartFile.getOriginalFilename()+ " file succesfully saved");
     }
 
-    @GetMapping("/preview/{hashId")
+    @GetMapping("/preview/{hashId}")
     public ResponseEntity previewFile(@PathVariable String hashId ) throws IOException {
         FileStorage fileStorage=fileStorageService.findByHashId(hashId);
         return ResponseEntity.ok()
@@ -45,7 +45,7 @@ public class FileStorageController {
     }
 
 
-    @GetMapping("/download/{hashId")
+    @GetMapping("/download/{hashId}")
     public ResponseEntity downloadFile(@PathVariable String hashId ) throws IOException {
         FileStorage fileStorage=fileStorageService.findByHashId(hashId);
         return ResponseEntity.ok()
