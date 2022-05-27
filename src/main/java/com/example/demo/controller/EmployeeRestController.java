@@ -6,6 +6,8 @@ import com.example.demo.service.EmployeeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
@@ -19,6 +21,11 @@ public class EmployeeRestController {
     @PostMapping("/employee")
     public ResponseEntity create(@RequestBody Employee employee){
         Employee employee1=employeeService.save(employee);
-        return ResponseEntity.ok(employee);
+        return ResponseEntity.ok("successfully saved");
+    }
+    @GetMapping("/employees")
+    public ResponseEntity getAll(){
+        List<Employee>employeeList=employeeService.findAll();
+        return ResponseEntity.ok(employeeList);
     }
 }

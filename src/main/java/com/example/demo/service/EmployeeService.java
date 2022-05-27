@@ -4,6 +4,8 @@ import com.example.demo.model.Employee;
 import com.example.demo.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeService {
 
@@ -15,6 +17,8 @@ public class EmployeeService {
     public Employee save(Employee employee){
         return employeeRepository.save(employee);
     }
-
+    public List<Employee> findAll(){
+        return  employeeRepository.findAll();
+    }
 
 }
